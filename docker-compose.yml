@@ -1,0 +1,49 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+      #- ./sql:/docker-entrypoint-initdb.d/:ro
+    ports:
+      - "33060:3306"
+    environment:
+       MYSQL_ROOT_PASSWORD: Ek4s0Cr3ifuDe9RY
+       MYSQL_DATABASE: iot
+       MYSQL_USER: wxd
+       MYSQL_PASSWORD: Ek4s0Cr3ifuDe9RY
+    networks:
+      - backend
+
+  redis:
+    image: redis:4.0
+    restart: always
+    ports:
+      - "63790:6379"
+    volumes:
+      - ./redis:/data/
+    environment:
+      REDIS_PASSWORD: WisVoJ4Pu3nSf5rs
+    networks:
+      - backend
+
+
+  mosquitto:
+    image: vimagick/mosquitto
+    ports:
+      - "1883:1883"
+      - "8080:8080"
+      - "8883:8883"
+    volumes:
+      - ./mqtt/mosquitto.conf:/etc/mosquitto/mosquitto.conf
+      - ./mqtt/pwfile:/etc/mosquitto/pwfile
+      - ./mqtt:/var/lib/mosquitto
+    restart: always
+    networks:
+      - backend
+
+
+
+networks:
+  backend:
