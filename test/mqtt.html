@@ -1,0 +1,20 @@
+
+<html>
+    <head>
+      <title>test Ws mqtt.js</title>
+    </head>
+    <body>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script>
+      var client = mqtt.connect("tcp://192.168.1.128:8080",{username:"mqtt", password:"836om4fl"}) // you add a ws:// url here
+      client.subscribe("mqtt/demo")
+    
+      client.on("message", function (topic, payload) {
+        alert([topic, payload].join(": "))
+        client.end()
+      })
+    
+      client.publish("mqtt/demo", "hello world!")
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,19 @@
+{
+  "name": "admin_app",
+  "version": "1.0.0",
+  "description": "admin",
+  "author": "will <weixudong@xkmob.com>",
+  "main": "app.js",
+  "scripts": {
+    
+    "api": "node app.js"
+  },
+  "dependencies": {
+    "connect-redis": "^3.3.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.1",
+    "express": "^4.16.1",
+    "express-session": "^1.14.0"
+  },
+  "license": "ISC"
+}
