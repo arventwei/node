@@ -54,5 +54,21 @@ services:
     ports:
         - "7310:7310"
 
+  es:
+    build:
+      context: ./es
+      dockerfile: ./Dockerfile
+    networks:
+      - backend
+    
+  es:
+    build:
+      context: ./ns
+      dockerfile: ./Dockerfile
+    networks:
+      - backend
+    deploy:
+      mode: replicated
+      replicas: 6
 networks:
   backend:
