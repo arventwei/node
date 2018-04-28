@@ -61,14 +61,12 @@ services:
     networks:
       - backend
     
-  es:
+  ns:
     build:
       context: ./ns
       dockerfile: ./Dockerfile
     networks:
       - backend
-    deploy:
-      mode: replicated
-      replicas: 6
+  
 networks:
   backend:
