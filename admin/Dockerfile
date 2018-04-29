@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-#RUN cd web && cd front && npm install && npm run build
+RUN cd src && npm install && npm run build
 
 
 EXPOSE 7310
