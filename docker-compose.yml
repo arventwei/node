@@ -56,12 +56,19 @@ services:
     
   echo:
     build:
-      context: ./ns
+      context: ./echo
+      dockerfile: ./Dockerfile
+    networks:
+      - backend
+
+  admin:
+    build:
+      context: ./admin
       dockerfile: ./Dockerfile
     networks:
       - backend
     ports:
-      - "7111:80"
+        - "7111:80"
   
 networks:
   backend:
