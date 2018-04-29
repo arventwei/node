@@ -1,0 +1,42 @@
+{
+    "debug":false,
+    "config": {
+        "port": 80,
+        "writeDB": {
+            "protocol": "mysql",
+            "query": {
+                "pool": true
+            },
+            "type": "write",
+            "host": "db",
+            "port": 3306,
+            "user": "wxd",
+            "password": "Ek4s0Cr3ifuDe9RY",
+            "database": "iot"
+        },
+        "redis_host": "redis",
+        "redis_port": 6379,
+        "redis_db": 0,
+        "redis_auth": "WisVoJ4Pu3nSf5rs"
+    },
+    "test": {
+        "port": 80,
+        "writeDB": {
+            "protocol": "mysql",
+            "query": {
+                "pool": true
+            },
+            "type": "write",
+            "host": "iot.bjhike.com",
+            "port": 3306,
+            "user": "root",
+            "password": "wxd123",
+            "database": "xf"
+        },
+        "redis_host": "iot.bjhike.com",
+        "redis_port": 6379,
+        "redis_db": 13,
+        "redis_auth": "wxd123"
+    }
+
+}

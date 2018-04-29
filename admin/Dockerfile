@@ -8,9 +8,10 @@ RUN npm install
 
 COPY . .
 
-RUN cd src && npm install && npm run build
+RUN cd admin && npm install && npm run build
+RUN cd system && npm install && npm run build
 
 
-EXPOSE 7310
+EXPOSE 80
 
-CMD [ "npm","run", "api" ]
+CMD [ "npm","run", "app" ]

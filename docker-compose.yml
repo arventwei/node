@@ -65,6 +65,7 @@ services:
     build:
       context: ./admin
       dockerfile: ./Dockerfile
+    
     networks:
       - backend
     ports:
