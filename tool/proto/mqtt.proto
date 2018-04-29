@@ -1,0 +1,157 @@
+syntax = "proto3";
+package com.mqtt.network;
+
+
+//!-=-=-=-=-=-=-=-=-=-协议码
+enum Opcode
+{
+    OPCODE_BEGIN=0;
+
+//!设备通过d/deviceid/push 发送
+    PushStatus=1;	//!	在线或离线
+    PushSensorData=2;   //！传感器信息
+    PushSwitch=3;       //!开关
+    PushSpeed=4;    //!新风机风速
+    PushMode=5;     //!新风机状态
+    PushVersion=6;  //!固件和驱动版本号
+    PushDeviceTime=7;   //!运行和工作时间
+    PushCity=8; //!如果设备有显示屏，可以设置地理位置的
+    PushTimeOnOff=9;   //!设备定时信息，有显示屏的可以设置
+    PushAutoControl=10;  //!自动阈值信息，有显示屏的设置
+    
+    //!设备通过d/deviceid/get 发送 
+    GetTime=11;         //!请求时间
+    GetVersion=12;      //请求最新版本信息
+    GetWeather=13;     //!请求天气信息
+    GetBindUser=14; //!获取设备绑定的用户信息，给有屏幕的使用
+    GetHistory=15; //!获取设备历史记录，给有屏幕的使用
+
+
+    //!设备通过d/deviceid/in 订阅消息
+    PullVersion=16; //!服务器返回最新版本信息
+    PullTime=17;//!服务器返回时间
+    PullUpdate=18;//!服务器推送更新
+    PullWeather=19;//@室外天气信息
+    PullBindUser=20;
+    PullHistory=21;
+
+    PullSwitch=22;//!下发设备开关
+    PullSpeed=23;//!下发设备风速
+    PullMode=24;//!下发设备模式
+    PullAutoControl=25;//!下发设备自动阈值
+}
+
+//-=-=-=-=-=-=-=-=-=-=协议字段
+//设备登录消息,
+message MsgPushStatus{ 
+   bool state=1;	//!true 在线,反之不在线
+}
+
+
+message MsgPushSensorData{ 
+   int32 temp=1;	//!
+   int32 humi=2;	//!
+   int32 pm25=3;	//!
+   float tvoc=4;	//!
+   float heho=5;	//!
+   int32 co2=6;	//!
+}
+
+message MsgPushSwitch{ 
+   bool state=1;	//!
+}
+message MsgPushSpeed{ 
+   int32 state=1;	//!
+}
+
+message MsgPushMode{ 
+   int32 state=1;	//!
+}
+message MsgPushVersion{ 
+   string firm_version=1;	//!
+   string driver_version=2;	//!
+   string reserved_version=3;	//!
+}
+message MsgPushDeviceTime{ 
+   int32 run_time=1;	//!单位分钟
+   int32 work_time=2;	//!
+}
+message MsgPushCity{ 
+   int32 city_id=1;	//!
+}
+message MsgPushTimeOnOff{ 
+   int32 state=1;	//!TODO
+}
+message MsgPushAutoControl{ 
+   int32 state=1;	//!TODO
+}
+//!获取版本和型号信息
+message MsgPullVersion{ 
+   string firm_version = 1;
+   string firm_url = 2;
+   string firm_md5 = 3;
+
+   string driver_version = 4;
+   string driver_url = 5;
+   string driver_md5 = 6;
+
+   string device_type=7;
+}
+message MsgPullTime{ 
+   int32 unix_time=1;	//!unix时间戳
+   int32 year=2;
+   int32 month=3;
+   int32 day=4;
+   int32 hour=5;
+   int32 minute=6;
+   int32 second=7;
+   int32 weak=8; //!0-星期日,1星期一
+}
+message MsgPullUpdate{ 
+   string firm_version = 1;
+   string firm_url = 2;
+   string firm_md5 = 3;
+
+   string driver_version = 4;
+   string driver_url = 5;
+   string driver_md5 = 6;
+}
+message MsgPullWeather{ 
+   int32 temp=1;	//!
+   int32 humi=2;
+   int32 pm25=3;
+   int32 aqi=4;
+   int32 co=5;
+   int32 no2=6;
+   int32 pm10=7;
+   int32 so2=8;
+   int32 o3=9;
+   string weather=10;   //!多云转阴
+   string temp_range = 11;//15°C/28°C
+   string wind_dir = 12;    //南风
+   string wind_power = 13;  //3级
+   int32 pub_unix_time=14; //!发布时间
+
+   string city_name=15;
+   int32  city_id=16;
+
+
+}
+message MsgPullBindUser{ 
+   int32 state=1;	//!TODO
+}
+message MsgPullHistory{ 
+   int32 state=1;	//!TODO
+}
+message MsgPullSwich{ 
+   bool state=1;	//!
+}
+message MsgPullSpeed{ 
+   int32 state=1;	//!
+}
+message MsgPullMode{ 
+   int32 state=1;	//!
+}
+message MsgPullAutoControl{ 
+   int32 state=1;	//!//TODO
+}
