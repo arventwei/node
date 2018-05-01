@@ -20,6 +20,11 @@
                         <Icon type="navicon" size="32"></Icon>
                     </Button>
                 </div>
+                <div class="header-middle-con">
+                    <div class="main-breadcrumb">
+                        <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>
+                    </div>
+                </div>
                 <div class="header-avator-con">
                     <div class="user-dropdown-menu-con">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
@@ -48,10 +53,13 @@
 <script>
 import Cookies from 'js-cookie';
 import shrinkableMenu from './main-components/shrinkable-menu/shrinkable-menu.vue';
+import breadcrumbNav from './main-components/breadcrumb-nav.vue';
+import util from '@/libs/util.js';
 
 export default {
     components: {
-        shrinkableMenu
+        shrinkableMenu,
+        breadcrumbNav
     },
     data () {
         return {
@@ -62,10 +70,14 @@ export default {
     computed: {
         menuList () {
             return this.$store.state.app.menuList;
-        }
+        },
+         currentPath () {
+                return this.$store.state.app.currentPath; // 当前面包屑数组
+            }
     },
     methods: {
         init () {
+            let pathArr = util.setCurrentPath(this, this.$route.name);
             this.userName = Cookies.get('user');
         },
         toggleClick () {
@@ -77,6 +89,19 @@ export default {
             });
         }
     },
+      watch: {
+            '$route' (to) {
+                this.$store.commit('setCurrentPageName', to.name);
+                let pathArr = util.setCurrentPath(this, to.name);
+                // if (pathArr.length > 2) {
+                //     this.$store.commit('addOpenSubmenu', pathArr[1].name);
+                // }
+                //this.checkTag(to.name);
+                localStorage.currentPageName = to.name;
+            },
+           
+          
+        },
     mounted () {
         this.init();
     }

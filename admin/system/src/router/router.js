@@ -7,7 +7,7 @@ export const loginRouter = {
     meta: {
         title: 'Login - 登录'
     },
-    component: resolve => { require(['@/views/login.vue'], resolve); }
+    component: () => import('@/views/login.vue')
 };
 
 export const page404 = {
@@ -16,7 +16,7 @@ export const page404 = {
     meta: {
         title: '404-页面不存在'
     },
-    component: resolve => { require(['@/views/error-page/404.vue'], resolve); }
+    component: () => import('@/views/error-page/404.vue')
 };
 
 export const page403 = {
@@ -25,7 +25,7 @@ export const page403 = {
         title: '403-权限不足'
     },
     name: 'error-403',
-    component: resolve => { require(['@//views/error-page/403.vue'], resolve); }
+    component: () => import('@//views/error-page/403.vue')
 };
 
 export const page500 = {
@@ -34,16 +34,17 @@ export const page500 = {
         title: '500-服务端错误'
     },
     name: 'error-500',
-    component: resolve => { require(['@/views/error-page/500.vue'], resolve); }
+    component: () => import('@/views/error-page/500.vue')
 };
 
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
 export const otherRouter = {
     path: '/',
     name: 'otherRouter',
+    redirect: '/home',
     component: Main,
     children: [
-        { path: 'home', title: {i18n: 'home'}, name: 'home_index', component: resolve => { require(['@/views/home/home.vue'], resolve); } }
+        { path: 'home', title: '首页', name: 'home_index', component: () => import('@/views/home/home.vue') }
     ]
 };
 
@@ -61,25 +62,25 @@ export const appRouter = [
                 icon: 'ios-paper-outline',
                 name: 'page1',
                 title: 'Page1',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
+                component: () => import('@/views/group/page1/page1.vue')
             },
             {
-                path: 'page2',
+                path: 'page5',
                 icon: 'ios-list-outline',
-                name: 'page2',
-                title: 'Page2',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
+                name: 'page69',
+                title: 'Page634234',
+                component: () => import('@/views/group/page2/page2.vue')
             }
         ]
     },
     {
-        path: '/page',
+        path: '/page33',
         icon: 'ios-paper',
-        title: 'Page',
-        name: 'page',
+        title: 'Page33',
+        name: 'page33',
         component: Main,
         children: [
-            { path: 'index', title: 'Page', name: 'page_index', component: resolve => { require(['@/views/page/page.vue'], resolve); } }
+            { path: 'index', title: 'Page', name: 'page_index', component: () => import('@/views/page/page.vue') }
         ]
     }
 ];

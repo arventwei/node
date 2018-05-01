@@ -12,6 +12,9 @@ new Vue({
     router: router,
     store: store,
     render: h => h(App),
+    data: {
+        currentPageName: ''
+    },
     mounted () {
         this.$store.commit('updateMenulist');
     }
