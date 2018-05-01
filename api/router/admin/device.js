@@ -14,14 +14,31 @@ const _ = require('underscore');
 
 
 function get_device_count(req, res, next) {
+
+  var query_condition = {};
+  if (req.body['mac'] != null && req.body['mac'].length>0){
     var mac = misc.trim(req.body.mac);
+    query_condition["like_mac"] = mac;
+  }
+  if (req.body['company_id'] != null ) {
+   // var mac = misc.trim(req.body.company_id);
+    query_condition["company_id"] = req.body['company_id'];
+  }
+  if (req.body['branch_id'] != null) {
+    // var mac = misc.trim(req.body.company_id);
+    query_condition["branch_id"] = req.body['branch_id'];
+  }
+  if (req.body['product_id'] != null) {
+    // var mac = misc.trim(req.body.company_id);
+    query_condition["product_id"] = req.body['product_id'];
+  }
     //var password = sha1(misc.trim(req.body.password));
   
     //  var user_data =null;
-    var query_condition = {};
-    if (mac != null && mac.length > 0) {
-      query_condition["like_mac"] = mac;
-    }
+    
+    // if (mac != null && mac.length > 0) {
+     
+    // }
     var ret_val = {
       total: 0
     };
