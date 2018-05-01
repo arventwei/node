@@ -5,15 +5,15 @@ services:
     image: mysql:5.7
     restart: always
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./swap/mysql:/var/lib/mysql
       #- ./sql:/docker-entrypoint-initdb.d/:ro
     ports:
       - "7106:3306"
     environment:
-       MYSQL_ROOT_PASSWORD: Ek4s0Cr3ifuDe9RY
+       MYSQL_ROOT_PASSWORD: FdDCas92ARPcKgtx
        MYSQL_DATABASE: iot
        MYSQL_USER: wxd
-       MYSQL_PASSWORD: Ek4s0Cr3ifuDe9RY
+       MYSQL_PASSWORD: FdDCas92ARPcKgtx
     networks:
       - backend
 
@@ -24,9 +24,17 @@ services:
     ports:
       - "7107:6379"
     volumes:
-      - ./redis:/data/
+      - ./swap/redis/data:/data/
+      - ./swap/redis/etc/redis-password:/run/secrets/redis-password
     environment:
-      REDIS_PASSWORD: WisVoJ4Pu3nSf5rs
+        REDIS_PASS_FILE: /run/secrets/redis-password
+    command: [
+      "bash", "-c",
+      '
+       docker-entrypoint.sh
+       --requirepass "$$(cat $$REDIS_PASS_FILE)"
+      '
+    ]
     networks:
       - backend
 
@@ -38,9 +46,9 @@ services:
       - "7108:1883"
       - "7109:8080"
     volumes:
-      - ./mqtt/mosquitto.conf:/etc/mosquitto/mosquitto.conf
-      - ./mqtt/pwfile:/etc/mosquitto/pwfile
-      - ./mqtt:/var/lib/mosquitto
+      - ./swap/mqtt/mosquitto.conf:/etc/mosquitto/mosquitto.conf
+      - ./swap/mqtt/pwfile:/etc/mosquitto/pwfile
+      - ./swap/mqtt:/var/lib/mosquitto
     restart: always
     networks:
       - backend
