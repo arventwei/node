@@ -1,7 +1,7 @@
 {
     "debug":true,
     "config": {
-        "port": 7107,
+        "port": 7110,
         "writeDB": {
             "protocol": "mysql",
             "query": {
