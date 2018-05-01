@@ -9,10 +9,8 @@ module.exports.redisSub = require('./redis_sub');
 module.exports.misc = require('./misc');
 module.exports.logger = require('./logger');
 var cfg = require('./config.json');
-if(cfg.debug){
-    module.exports.config =cfg.test;
-}else{
-    module.exports.config =cfg.config;
-}
+
+module.exports.config =cfg.config;
+
 module.exports.config.debug = cfg.debug;
 
