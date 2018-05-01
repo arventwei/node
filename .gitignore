@@ -60,3 +60,6 @@ typings/
 .vscode/settings.json
 
 
+admin/public/admin
+admin/public/system
+admin/public/wechat
