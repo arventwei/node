@@ -70,6 +70,15 @@ services:
       - backend
     ports:
         - "7111:80"
+
+  wechat_cb:
+    build:
+      context: ./wechat_cb
+      dockerfile: ./Dockerfile
+    networks:
+      - backend
+    ports:
+        - "7112:80"
   
 networks:
   backend:

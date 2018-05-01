@@ -44,7 +44,12 @@ export const otherRouter = {
     redirect: '/home',
     component: Main,
     children: [
-        { path: 'home', title: '首页', name: 'home_index', component: () => import('@/views/home/home.vue') }
+        { path: 'home', title: '首页', name: 'home_index', component: () => import('@/views/home/home.vue') },
+        { path: 'company_create', title: '创建公司', name: 'company_create', component: () => import('@/views/page/company_create.vue') },
+        { path: 'device_create', title: '设备注册', name: 'device_create', component: () => import('@/views/page/device_create.vue') },
+        { path: 'wechat_create', title: '创建公众号', name: 'wechat_create', component: () => import('@/views/page/wechat_create.vue') },
+        { path: 'product_create', title: '创建产品', name: 'product_create', component: () => import('@/views/page/product_create.vue') },
+        { path: 'firmware_create', title: '创建固件', name: 'firmware_create', component: () => import('@/views/page/firmware_create.vue') },
     ]
 };
 
@@ -54,23 +59,69 @@ export const appRouter = [
         path: '/group',
         icon: 'ios-folder',
         name: 'group',
-        title: 'Group',
+        title: '管理',
         component: Main,
         children: [
             {
-                path: 'page1',
-                icon: 'ios-paper-outline',
-                name: 'page1',
-                title: 'Page1',
-                component: () => import('@/views/group/page1/page1.vue')
+                path: 'company_list',
+                icon: 'pound',
+                name: 'company_list',
+                title: '公司管理',
+                component: () => import('@/views/page/company_list.vue')
             },
             {
-                path: 'page5',
-                icon: 'ios-list-outline',
-                name: 'page69',
-                title: 'Page634234',
-                component: () => import('@/views/group/page2/page2.vue')
-            }
+                path: 'device_list',
+                icon: 'ios-paper-outline',
+                name: 'device_list',
+                title: '设备管理',
+                component: () => import('@/views/page/device_list.vue')
+            },
+
+          
+         
+            {
+                path: 'wechat_list',
+                icon: 'pound',
+                name: 'wechat_list',
+                title: '公众号管理',
+                component: () => import('@/views/page/wechat_list.vue')
+            },
+            // {
+            //     path: 'wechat_create',
+            //     icon: 'arrow-graph-up-right',
+            //     name: 'wechat_create',
+            //     title: '创建公众号',
+            //     component: () => import('@/views/page/wechat_create.vue')
+            // },
+            {
+                path: 'product_list',
+                icon: 'crop',
+                name: 'product_list',
+                title: '产品管理',
+                component: () => import('@/views/page/product_list.vue')
+            },
+            // {
+            //     path: 'product_create',
+            //     icon: 'arrow-graph-up-right',
+            //     name: 'product_create',
+            //     title: '创建产品',
+            //     component: () => import('@/views/page/product_create.vue')
+            // },
+            {
+                path: 'firmware_list',
+                icon: 'android-upload',
+                name: 'firmware_list',
+                title: '固件管理',
+                component: () => import('@/views/page/firmware_list.vue')
+            },
+            // {
+            //     path: 'firmware_create',
+            //     icon: 'android-upload',
+            //     name: 'firmware_create',
+            //     title: '创建固件',
+            //     component: () => import('@/views/page/firmware_create.vue')
+            // }
+           
         ]
     },
     {
