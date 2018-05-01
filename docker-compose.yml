@@ -53,6 +53,15 @@ services:
       - backend
     ports:
         - "7110:80"
+
+  wechat_token:
+    build:
+      context: ./wechat_token
+      dockerfile: ./Dockerfile
+    networks:
+      - backend
+    ports:
+      - "7113:80"
     
   echo:
     build:
@@ -60,6 +69,8 @@ services:
       dockerfile: ./Dockerfile
     networks:
       - backend
+    ports:
+      - "7114:80"
 
   admin:
     build:
@@ -69,7 +80,7 @@ services:
     networks:
       - backend
     ports:
-        - "7111:80"
+      - "7111:80"
 
   wechat_cb:
     build:
@@ -78,7 +89,7 @@ services:
     networks:
       - backend
     ports:
-        - "7112:80"
+      - "7112:80"
   
 networks:
   backend:
