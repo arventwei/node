@@ -4,14 +4,17 @@
 <template>
     <div class="main" :class="{'main-hide-text': shrink}">
         <div class="sidebar-menu-con" :style="{width: shrink?'60px':'200px', overflow: shrink ? 'visible' : 'auto'}">
+           
             <shrinkable-menu 
                 :shrink="shrink"
+           
                 :menu-list="menuList">
                 <div slot="top" class="logo-con">
                     <img v-show="!shrink"  src="../images/logo.jpg" key="max-logo" />
                     <img v-show="shrink" src="../images/logo-min.jpg" key="min-logo" />
                 </div>
             </shrinkable-menu>
+           
         </div>
         <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'200px'}">
             <div class="main-header">
@@ -56,10 +59,12 @@ import shrinkableMenu from './main-components/shrinkable-menu/shrinkable-menu.vu
 import breadcrumbNav from './main-components/breadcrumb-nav.vue';
 import util from '@/libs/util.js';
 
+
 export default {
     components: {
         shrinkableMenu,
-        breadcrumbNav
+        breadcrumbNav,
+        
     },
     data () {
         return {
@@ -88,7 +93,9 @@ export default {
                 name: 'login'
             });
         }
+      
     },
+     
       watch: {
             '$route' (to) {
                 this.$store.commit('setCurrentPageName', to.name);
