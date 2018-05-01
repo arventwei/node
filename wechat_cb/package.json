@@ -1,12 +1,12 @@
 {
-  "name": "es_app",
+  "name": "wechat_cb_app",
   "version": "1.0.0",
-  "description": "es",
-  "author": "will <weixudong@xkmob.com>",
+  "description": "wechat callback",
+  "author": "giraffe <giraffe@xkmob.com>",
   "main": "app.js",
   "scripts": {
     
-    "api": "node app.js"
+    "app": "node app.js"
   },
   "dependencies": {
     "async": "^2.6.0",

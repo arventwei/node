@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE 80
 
-CMD [ "npm","run", "api" ]
+CMD [ "npm","run", "app" ]
