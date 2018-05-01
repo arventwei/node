@@ -10,8 +10,9 @@ RUN cnpm install
 
 COPY . .
 
-RUN cd admin && cnpm install && npm run build
-RUN cd system && cnpm install && npm run build
+RUN cd admin && cnpm install && cnpm run build
+RUN cd system && cnpm install && cnpm run build
+RUN cd wechat && cnpm install && cnpm run build
 
 
 EXPOSE 80
