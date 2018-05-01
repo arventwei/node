@@ -1,12 +1,12 @@
 {
-  "name": "es_app",
+  "name": "echo_app",
   "version": "1.0.0",
-  "description": "es",
+  "description": "echo",
   "author": "will <weixudong@xkmob.com>",
   "main": "app.js",
   "scripts": {
     
-    "api": "node app.js"
+    "app": "node app.js"
   },
   "dependencies": {
     "async": "^2.6.0",
