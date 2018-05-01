@@ -9,9 +9,7 @@ var mysql = require('mysql'),
 
 var cfg = require('./config.json');
 var config = cfg.config;
-if(cfg.debug){
-    config =cfg.test;
-}
+
 
 var process = require('process');
 //Q = require('q'),

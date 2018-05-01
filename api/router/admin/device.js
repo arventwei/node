@@ -16,21 +16,21 @@ const _ = require('underscore');
 function get_device_count(req, res, next) {
 
   var query_condition = {};
-  if (req.body['mac'] != null && req.body['mac'].length>0){
-    var mac = misc.trim(req.body.mac);
+  if (req.query['mac'] != null && req.query['mac'].length>0){
+    var mac = misc.trim(req.query.mac);
     query_condition["like_mac"] = mac;
   }
-  if (req.body['company_id'] != null ) {
+  if (req.query['company_id'] != null ) {
    // var mac = misc.trim(req.body.company_id);
-    query_condition["company_id"] = req.body['company_id'];
+    query_condition["company_id"] = req.query['company_id'];
   }
-  if (req.body['branch_id'] != null) {
+  if (req.query['branch_id'] != null) {
     // var mac = misc.trim(req.body.company_id);
-    query_condition["branch_id"] = req.body['branch_id'];
+    query_condition["branch_id"] = req.query['branch_id'];
   }
-  if (req.body['product_id'] != null) {
+  if (req.query['product_id'] != null) {
     // var mac = misc.trim(req.body.company_id);
-    query_condition["product_id"] = req.body['product_id'];
+    query_condition["product_id"] = req.query['product_id'];
   }
     //var password = sha1(misc.trim(req.body.password));
   

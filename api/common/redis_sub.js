@@ -15,9 +15,7 @@ var fs = require("fs"),
 
 var cfg = require('./config.json');
 var config = cfg.config;
-if(cfg.debug){
-    config =cfg.test;
-}
+
 
 var Redis = require('ioredis');
 

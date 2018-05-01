@@ -12,6 +12,6 @@ COPY . .
 #RUN cd web && cd front && npm install && npm run build
 
 
-EXPOSE 80
+EXPOSE 7110
 
 CMD [ "npm","run", "app" ]
