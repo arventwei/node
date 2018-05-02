@@ -49,12 +49,13 @@ message MsgPushStatus{
 
 
 message MsgPushSensorData{ 
-   int32 temp=1;	//!
+   float temp=1;	//!
    int32 humi=2;	//!
    int32 pm25=3;	//!
    float tvoc=4;	//!
    float heho=5;	//!
    int32 co2=6;	//!
+   int32 pm10=7;	//!
 }
 
 message MsgPushSwitch{ 
